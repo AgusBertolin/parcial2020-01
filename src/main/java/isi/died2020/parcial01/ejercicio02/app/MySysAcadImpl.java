@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import isi.died2020.parcial01.ejercicio02.db.BaseDeDatos;
+import isi.died2020.parcial01.ejercicio02.db.BaseDeDatosExcepcion;
 import isi.died2020.parcial01.ejercicio02.dominio.*;
 
 
@@ -40,7 +41,13 @@ public class MySysAcadImpl implements MySysAcad {
 		a.addCursada(insc);
 		m.addInscripcion(insc);
 		// DESCOMENTAR Y gestionar excepcion
-		// DB.guardar(insc);
+		
+		try {
+			DB.guardar(insc);
+		} catch (BaseDeDatosExcepcion e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
